@@ -2,10 +2,10 @@
 """Curriculum authoring script — generates L0 and L1 lesson JSON via Claude.
 
 Usage:
-  python scripts/author_curriculum.py              # generate all missing lessons
-  python scripts/author_curriculum.py --levels L0  # L0 only
-  python scripts/author_curriculum.py --overwrite  # regenerate even if file exists
-  python scripts/author_curriculum.py --dry-run    # print prompts, don't call API
+  python -m englo.scripts.author_curriculum              # generate all missing lessons
+  python -m englo.scripts.author_curriculum --levels L0  # L0 only
+  python -m englo.scripts.author_curriculum --overwrite  # regenerate even if file exists
+  python -m englo.scripts.author_curriculum --dry-run    # print prompts, don't call API
 
 Each generated file is validated against the Activity Pydantic schema before
 being written.  Existing files are skipped unless --overwrite is passed, so
@@ -21,16 +21,17 @@ import sys
 import time
 from pathlib import Path
 
-# Allow running from repo root
-sys.path.insert(0, str(Path(__file__).parent.parent))
+# Resolve repo root so this script works from any working directory
+_REPO_ROOT = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(_REPO_ROOT))
 
 from dotenv import load_dotenv
 load_dotenv()
 
 import anthropic
-from englo.models import Activity, LessonFile, Level, Lesson
+from englo.models import LessonFile
 
-_CURRICULUM_DIR = Path(__file__).parent.parent / "englo" / "curriculum"
+_CURRICULUM_DIR = Path(__file__).parent.parent / "curriculum"
 
 # ── Lesson plan ───────────────────────────────────────────────────────────────
 
@@ -295,8 +296,7 @@ def _build_prompt(plan: dict) -> str:
     )
 
 
-def _validate_lesson(raw: dict, plan: dict) -> LessonFile:
-    """Parse and validate via Pydantic; raises on any schema violation."""
+def _validate_lesson(raw: dict) -> LessonFile:
     lf = LessonFile(**raw)
     assert len(lf.lesson.activities) >= 4, "Too few activities"
     for a in lf.lesson.activities:
@@ -306,15 +306,11 @@ def _validate_lesson(raw: dict, plan: dict) -> LessonFile:
 
 
 def generate_lesson(plan: dict, client: anthropic.Anthropic, dry_run: bool) -> str | None:
-    """Generate one lesson JSON string.  Returns None on dry-run."""
     prompt = _build_prompt(plan)
-
     if dry_run:
-        print(f"\n{'='*60}")
-        print(f"DRY RUN: {plan['lesson_id']} — {plan['title']}")
+        print(f"\n{'='*60}\nDRY RUN: {plan['lesson_id']} — {plan['title']}")
         print(prompt[:400] + "…")
         return None
-
     response = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=4096,
@@ -327,8 +323,7 @@ def generate_lesson(plan: dict, client: anthropic.Anthropic, dry_run: bool) -> s
 def _strip_fences(text: str) -> str:
     if text.startswith("```"):
         lines = text.splitlines()
-        # drop first line (```json or ```) and last line (```)
-        inner = lines[1:] if lines[-1].strip() == "```" else lines[1:]
+        inner = lines[1:]
         if inner and inner[-1].strip() == "```":
             inner = inner[:-1]
         return "\n".join(inner)
@@ -339,57 +334,46 @@ def _strip_fences(text: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate ENGLO curriculum JSON files")
-    parser.add_argument("--levels", nargs="+", default=["L0", "L1"],
-                        help="Levels to generate (default: L0 L1)")
-    parser.add_argument("--overwrite", action="store_true",
-                        help="Regenerate even if file already exists")
-    parser.add_argument("--dry-run", action="store_true",
-                        help="Print prompts without calling the API")
+    parser.add_argument("--levels", nargs="+", default=["L0", "L1"])
+    parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
     levels = set(args.levels)
     plans = [p for p in LESSON_PLAN if p["level_id"] in levels]
 
+    client = None
     if not args.dry_run:
         api_key = os.getenv("ANTHROPIC_API_KEY")
         if not api_key:
             print("ERROR: ANTHROPIC_API_KEY not set.", file=sys.stderr)
             sys.exit(1)
         client = anthropic.Anthropic(api_key=api_key)
-    else:
-        client = None  # type: ignore
 
     ok = skip = fail = 0
-
     for plan in plans:
         out_path = _CURRICULUM_DIR / plan["file"]
-
         if out_path.exists() and not args.overwrite:
-            print(f"  SKIP  {plan['file']} (already exists; use --overwrite to regenerate)")
+            print(f"  SKIP  {plan['file']}")
             skip += 1
             continue
 
         print(f"  GEN   {plan['lesson_id']} — {plan['title']} … ", end="", flush=True)
-
         raw_text = generate_lesson(plan, client, args.dry_run)
         if raw_text is None:
             continue
 
         try:
             raw_json = json.loads(_strip_fences(raw_text))
-            lf = _validate_lesson(raw_json, plan)
-            out_path.write_text(
-                json.dumps(raw_json, ensure_ascii=False, indent=2), encoding="utf-8"
-            )
+            lf = _validate_lesson(raw_json)
+            out_path.write_text(json.dumps(raw_json, ensure_ascii=False, indent=2))
             print(f"OK ({len(lf.lesson.activities)} activities)")
             ok += 1
         except Exception as e:
             print(f"FAIL — {e}")
-            # Write raw text for inspection even on validation failure
-            (out_path.with_suffix(".raw.txt")).write_text(raw_text, encoding="utf-8")
+            out_path.with_suffix(".raw.txt").write_text(raw_text)
             fail += 1
 
-        # Polite pause between API calls
         if not args.dry_run:
             time.sleep(1)
 
