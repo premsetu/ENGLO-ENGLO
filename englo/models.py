@@ -59,3 +59,32 @@ class TurnResult(BaseModel):
     transcript: str
     pronunciation: PronunciationScore
     llm_response: LLMResponse
+
+
+class Level(BaseModel):
+    id: str
+    name: str
+    cefr: str
+    hindi_support: float
+    accent_setting: str
+
+
+class Lesson(BaseModel):
+    id: str
+    level_id: str = ""
+    title: str
+    activities: list[Activity]
+
+
+class LessonFile(BaseModel):
+    """One curriculum JSON file: a level header plus one lesson."""
+
+    level: Level
+    lesson: Lesson
+
+
+class NextStep(str, Enum):
+    REPEAT = "repeat"
+    NEXT_ACTIVITY = "next_activity"
+    NEXT_LESSON = "next_lesson"
+    COURSE_COMPLETE = "course_complete"

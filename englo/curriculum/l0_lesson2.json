@@ -1,0 +1,75 @@
+{
+  "level": {
+    "id": "L0",
+    "name": "Bootstrap",
+    "cefr": "pre-A1",
+    "hindi_support": 0.8,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L0-2",
+    "title": "Numbers 1–10",
+    "activities": [
+      {
+        "id": "L0-2-A1",
+        "type": "listen_repeat",
+        "target_text": "One, two, three.",
+        "hindi_scaffold": "सुनिए और दोहराइए: One, two, three.",
+        "expected_pattern": "one two three",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["one", "two", "three"]
+      },
+      {
+        "id": "L0-2-A2",
+        "type": "listen_repeat",
+        "target_text": "Four, five, six.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Four, five, six.",
+        "expected_pattern": "four five six",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["four", "five", "six"]
+      },
+      {
+        "id": "L0-2-A3",
+        "type": "listen_repeat",
+        "target_text": "Seven, eight, nine, ten.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Seven, eight, nine, ten.",
+        "expected_pattern": "seven eight nine ten",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["seven", "eight", "nine", "ten"]
+      },
+      {
+        "id": "L0-2-A4",
+        "type": "translate_say",
+        "target_text": "Five.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: पाँच को English में क्या कहते हैं?",
+        "expected_pattern": "five",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L0-2-A5",
+        "type": "prompt_respond",
+        "target_text": "How many fingers am I holding up? Three.",
+        "hindi_scaffold": "जवाब दीजिए — tutor तीन उंगलियां दिखा रहा है। English में बताइए।",
+        "expected_pattern": "three",
+        "success_criteria": "correct_number_word and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      }
+    ]
+  }
+}
