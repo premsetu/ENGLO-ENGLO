@@ -1,0 +1,75 @@
+{
+  "level": {
+    "id": "L0",
+    "name": "Bootstrap",
+    "cefr": "pre-A1",
+    "hindi_support": 0.8,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L0-1",
+    "title": "Greetings & Introductions",
+    "activities": [
+      {
+        "id": "L0-1-A1",
+        "type": "listen_repeat",
+        "target_text": "Hello.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Hello.",
+        "expected_pattern": "Hello",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["Hello"]
+      },
+      {
+        "id": "L0-1-A2",
+        "type": "listen_repeat",
+        "target_text": "My name is Priya.",
+        "hindi_scaffold": "सुनिए और दोहराइए: My name is Priya.",
+        "expected_pattern": "My name is [name]",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["my", "name", "is"]
+      },
+      {
+        "id": "L0-1-A3",
+        "type": "listen_repeat",
+        "target_text": "How are you?",
+        "hindi_scaffold": "सुनिए और दोहराइए: How are you?",
+        "expected_pattern": "How are you",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["how", "are", "you"]
+      },
+      {
+        "id": "L0-1-A4",
+        "type": "listen_repeat",
+        "target_text": "I am fine, thank you.",
+        "hindi_scaffold": "सुनिए और दोहराइए: I am fine, thank you.",
+        "expected_pattern": "I am fine thank you",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["I", "am", "fine", "thank", "you"]
+      },
+      {
+        "id": "L0-1-A5",
+        "type": "translate_say",
+        "target_text": "Good morning.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: 'सुप्रभात' को English में क्या कहते हैं?",
+        "expected_pattern": "Good morning",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["good", "morning"]
+      }
+    ]
+  }
+}
