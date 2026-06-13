@@ -35,9 +35,25 @@ class Activity(BaseModel):
     vocab_introduced: list[str] = []
 
 
+class WordInfo(BaseModel):
+    word: str
+    probability: float  # Whisper's per-word log-prob converted to 0-1
+    start: float = 0.0  # seconds
+    end: float = 0.0
+
+
+class STTResult(BaseModel):
+    transcript: str
+    words: list[WordInfo] = []
+
+
 class PronunciationScore(BaseModel):
-    overall: float = 0.0
-    weak_phonemes: list[str] = []
+    overall: float = 0.0          # 0–1
+    accuracy: float = 0.0         # phoneme/word accuracy
+    completeness: float = 0.0     # fraction of target words produced
+    fluency: float = 0.0          # based on word confidence distribution
+    weak_phonemes: list[str] = [] # IPA symbols or descriptive labels
+    backend: str = "none"         # "local" | "azure" | "none"
 
 
 class Verdict(str, Enum):

@@ -6,18 +6,18 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
 
-from . import stt, tts, tutor_llm
-from .models import Activity, PronunciationScore, TurnResult
+from . import pronunciation, stt, tts, tutor_llm
+from .models import Activity, ActivityType, PronunciationScore, TurnResult
 
 console = Console()
 
+# Only these activity types warrant pronunciation scoring
+_SCORED_TYPES = {ActivityType.LISTEN_REPEAT, ActivityType.RECALL_DRILL}
+
 
 def run_turn(activity: Activity, audio_path: str | Path | None = None) -> TurnResult:
-    """Drive one speak→listen→evaluate cycle for the given activity.
+    """Drive one speak→listen→evaluate cycle for the given activity."""
 
-    If `audio_path` is supplied the recorder is skipped (useful for testing).
-    Returns a TurnResult with the transcript, pronunciation stub, and LLM verdict.
-    """
     # 1. Play the tutor prompt
     _show_prompt(activity)
     tts.speak(
@@ -30,26 +30,35 @@ def run_turn(activity: Activity, audio_path: str | Path | None = None) -> TurnRe
     tmp_path: str | None = None
     if audio_path is None:
         from . import recorder
-        console.print("\n[bold green]🎤 Speak now — press Enter when done[/bold green]")
+        console.print("\n[bold green]Speak now — press Enter when done[/bold green]")
         tmp_path = recorder.record_to_file()
         source = tmp_path
     else:
         source = str(audio_path)
 
-    # 3. STT
+    # 3. STT — word timestamps included for pronunciation scoring
     console.print("[dim]Transcribing…[/dim]")
-    transcript = stt.transcribe(source)
-    console.print(f"[cyan]You said:[/cyan] {transcript!r}")
+    stt_result = stt.transcribe_full(source)
+    console.print(f"[cyan]You said:[/cyan] {stt_result.transcript!r}")
 
     if tmp_path:
         Path(tmp_path).unlink(missing_ok=True)
 
-    # 4. Pronunciation scoring — stub for Phase 1 (Phase 3 wires real scorer)
-    pron = PronunciationScore(overall=0.0, weak_phonemes=[])
+    # 4. Pronunciation scoring (only for shadow/repeat activities; stub otherwise)
+    if activity.type in _SCORED_TYPES:
+        console.print("[dim]Scoring pronunciation…[/dim]")
+        pron = pronunciation.score(
+            stt_result,
+            target_text=activity.target_text,
+            audio_path=source if audio_path else None,
+        )
+        _show_pronunciation(pron)
+    else:
+        pron = PronunciationScore(backend="none")
 
     # 5. Tutor LLM evaluation
     console.print("[dim]Evaluating…[/dim]")
-    llm_resp = tutor_llm.evaluate(activity, transcript, pron)
+    llm_resp = tutor_llm.evaluate(activity, stt_result.transcript, pron)
 
     # 6. Display + speak the response
     _show_verdict(llm_resp)
@@ -61,7 +70,7 @@ def run_turn(activity: Activity, audio_path: str | Path | None = None) -> TurnRe
 
     return TurnResult(
         activity_id=activity.id,
-        transcript=transcript,
+        transcript=stt_result.transcript,
         pronunciation=pron,
         llm_response=llm_resp,
     )
@@ -76,6 +85,26 @@ def _show_prompt(activity: Activity) -> None:
             ),
             title=f"[yellow]{activity.type.value}[/yellow]",
             border_style="yellow",
+        )
+    )
+
+
+def _show_pronunciation(pron: PronunciationScore) -> None:
+    bar = _score_bar(pron.overall)
+    weak = ", ".join(pron.weak_phonemes) if pron.weak_phonemes else "none"
+    colour = _score_colour(pron.overall)
+    console.print(
+        Panel(
+            Text.from_markup(
+                f"[{colour}]Overall {pron.overall:.0%}[/{colour}]  {bar}\n"
+                f"Accuracy [bold]{pron.accuracy:.0%}[/bold]  "
+                f"Completeness [bold]{pron.completeness:.0%}[/bold]  "
+                f"Fluency [bold]{pron.fluency:.0%}[/bold]\n"
+                f"[dim]Weak phonemes:[/dim] {weak}  "
+                f"[dim]backend: {pron.backend}[/dim]"
+            ),
+            title="Pronunciation",
+            border_style=colour,
         )
     )
 
@@ -95,3 +124,16 @@ def _show_verdict(resp) -> None:
             border_style=colour,
         )
     )
+
+
+def _score_bar(score: float, width: int = 12) -> str:
+    filled = round(score * width)
+    return "[" + "█" * filled + "░" * (width - filled) + "]"
+
+
+def _score_colour(score: float) -> str:
+    if score >= 0.75:
+        return "green"
+    if score >= 0.50:
+        return "yellow"
+    return "red"
