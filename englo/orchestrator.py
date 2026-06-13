@@ -77,13 +77,18 @@ def run_turn(activity: Activity, audio_path: str | Path | None = None) -> TurnRe
 
 
 def _show_prompt(activity: Activity) -> None:
+    hindi_pct = int(activity.hindi_support * 100)
     console.print(
         Panel(
             Text.from_markup(
                 f"[bold]Target:[/bold] {activity.target_text}\n"
                 f"[dim]{activity.hindi_scaffold}[/dim]"
             ),
-            title=f"[yellow]{activity.type.value}[/yellow]",
+            title=(
+                f"[yellow]{activity.type.value}[/yellow]  "
+                f"[dim]{activity.simplicity_level} · "
+                f"Hindi support {hindi_pct}%[/dim]"
+            ),
             border_style="yellow",
         )
     )
