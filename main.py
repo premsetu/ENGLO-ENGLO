@@ -10,7 +10,6 @@ Usage:
 from __future__ import annotations
 
 import sys
-from pathlib import Path
 
 from dotenv import load_dotenv
 from rich.console import Console
@@ -41,6 +40,13 @@ def _lesson_header(engine: CourseEngine) -> None:
     )
 
 
+def _run_one_activity(engine, tracker, audio_path, is_drill=False) -> NextStep | None:
+    """Run a single activity turn, log it, and return the NextStep (or None for drills)."""
+    activity = engine.current_activity if not is_drill else None
+    # For drills we receive the activity from outside; handled by caller.
+    return None
+
+
 def run_session(reset: bool = False, dry_wav: str | None = None) -> None:
     tracker = ProgressTracker()
     engine = CourseEngine()
@@ -53,53 +59,64 @@ def run_session(reset: bool = False, dry_wav: str | None = None) -> None:
         if cursor:
             engine.restore(cursor)
             console.print(
-                f"[dim]Resuming from lesson {cursor.get('lesson_idx', 0) + 1}, "
+                f"[dim]Resuming: lesson {cursor.get('lesson_idx', 0) + 1}, "
                 f"activity {cursor.get('activity_idx', 0) + 1}[/dim]\n"
             )
 
     _banner()
 
     while not engine.is_complete:
+        # ── SRS / error drills before each curriculum activity ────────────────
+        drill = engine.pop_pending_drill(tracker)
+        if drill:
+            console.print(Rule(f"[cyan]Recall Drill[/cyan] [dim]({drill.id})[/dim]"))
+            result = run_turn(drill, audio_path=dry_wav)
+            tracker.log_turn(result, drill)
+            tracker.mark_drill_done(drill.target_text, result.llm_response.verdict.value)
+            if dry_wav:
+                break
+            _prompt_continue()
+            continue
+
+        # ── Curriculum activity ───────────────────────────────────────────────
         _lesson_header(engine)
         activity = engine.current_activity
-
-        # Single-turn dry-run mode: use supplied WAV, then stop after one turn
-        audio_path = dry_wav
-
-        result = run_turn(activity, audio_path=audio_path)
-        tracker.log_turn(result)
+        result = run_turn(activity, audio_path=dry_wav)
+        tracker.log_turn(result, activity)
 
         step = engine.record_turn(result)
         tracker.set_cursor(engine.position())
 
         if step is NextStep.REPEAT:
-            remaining = engine.attempts
+            needed = engine.MAX_HARD_ATTEMPTS - engine._attempts
             console.print(
-                f"[yellow]Let's try again[/yellow] "
-                f"[dim](attempt {remaining} of {engine.MAX_ATTEMPTS if hasattr(engine, 'MAX_ATTEMPTS') else 3})[/dim]\n"
+                f"[yellow]Not quite — let's try again.[/yellow] "
+                f"[dim](up to {needed} more attempt{'s' if needed != 1 else ''})[/dim]\n"
             )
+        elif step is NextStep.NEXT_ACTIVITY:
+            console.print("[green]✓ Moving to next activity.[/green]\n")
         elif step is NextStep.NEXT_LESSON:
-            console.print(
-                "\n[bold green]Lesson complete! Starting next lesson…[/bold green]\n"
-            )
+            console.print("[bold green]Lesson complete![/bold green]\n")
         elif step is NextStep.COURSE_COMPLETE:
-            console.print("\n[bold magenta]Course complete! 🎉[/bold magenta]\n")
+            console.print("[bold magenta]Course complete![/bold magenta]\n")
             break
 
-        # In dry-run mode stop after the first turn
         if dry_wav:
             break
 
-        # Prompt to continue or quit between activities
-        try:
-            inp = console.input("\n[dim]Press Enter for the next activity, q to quit:[/dim] ")
-        except (EOFError, KeyboardInterrupt):
-            inp = "q"
-        if inp.strip().lower() == "q":
-            break
+        _prompt_continue()
 
     console.print(Rule())
     console.print(f"[bold]Session summary:[/bold] {tracker.summary()}")
+
+
+def _prompt_continue() -> None:
+    try:
+        inp = console.input("\n[dim]Press Enter for next, q to quit:[/dim] ")
+    except (EOFError, KeyboardInterrupt):
+        inp = "q"
+    if inp.strip().lower() == "q":
+        raise SystemExit(0)
 
 
 def main() -> None:
