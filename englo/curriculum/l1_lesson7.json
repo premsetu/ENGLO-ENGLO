@@ -1,0 +1,100 @@
+{
+  "level": {
+    "id": "L1",
+    "name": "First Sentences",
+    "cefr": "A1",
+    "hindi_support": 0.5,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L1-7",
+    "level_id": "L1",
+    "title": "Daily Routine",
+    "activities": [
+      {
+        "id": "L1-7-A1",
+        "type": "listen_repeat",
+        "target_text": "I wake up at seven o'clock.",
+        "hindi_scaffold": "सुनिए और दोहराइए: I wake up at seven o'clock.",
+        "expected_pattern": "i wake up at seven o'clock",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["wake up", "o'clock"]
+      },
+      {
+        "id": "L1-7-A2",
+        "type": "listen_repeat",
+        "target_text": "I eat breakfast in the morning. I go to work by bus.",
+        "hindi_scaffold": "सुनिए और दोहराइए: I eat breakfast in the morning. I go to work by bus.",
+        "expected_pattern": "i eat breakfast in the morning i go to work by bus",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["eat", "breakfast", "by", "bus"]
+      },
+      {
+        "id": "L1-7-A3",
+        "type": "listen_repeat",
+        "target_text": "I come home at six in the evening. I sleep at ten at night.",
+        "hindi_scaffold": "सुनिए और दोहराइए: I come home at six in the evening. I sleep at ten at night.",
+        "expected_pattern": "i come home at six in the evening i sleep at ten at night",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["come", "home", "evening", "sleep", "night"]
+      },
+      {
+        "id": "L1-7-A4",
+        "type": "translate_say",
+        "target_text": "I have lunch at one o'clock.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: मैं एक बजे दोपहर का खाना खाता/खाती हूँ।",
+        "expected_pattern": "i have lunch at one o'clock",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["lunch"]
+      },
+      {
+        "id": "L1-7-A5",
+        "type": "translate_say",
+        "target_text": "I exercise in the morning.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: मैं सुबह व्यायाम करता/करती हूँ।",
+        "expected_pattern": "i exercise in the morning",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["exercise"]
+      },
+      {
+        "id": "L1-7-A6",
+        "type": "prompt_respond",
+        "target_text": "I wake up at six o'clock.",
+        "hindi_scaffold": "जवाब दीजिए — आप कितने बजे उठते हैं? 'I wake up' से शुरू करें।",
+        "expected_pattern": "i wake up",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-7-A7",
+        "type": "prompt_respond",
+        "target_text": "In the morning, I brush my teeth and eat breakfast.",
+        "hindi_scaffold": "जवाब दीजिए — सुबह उठकर आप क्या करते हैं? English में दो काम बताइए।",
+        "expected_pattern": "in the morning",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["brush", "teeth"]
+      }
+    ]
+  }
+}

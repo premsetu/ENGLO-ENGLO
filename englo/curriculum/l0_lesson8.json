@@ -1,0 +1,100 @@
+{
+  "level": {
+    "id": "L0",
+    "name": "Bootstrap",
+    "cefr": "pre-A1",
+    "hindi_support": 0.8,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L0-8",
+    "level_id": "L0",
+    "title": "L0 Review — Words and Short Phrases",
+    "activities": [
+      {
+        "id": "L0-8-A1",
+        "type": "recall_drill",
+        "target_text": "Blue.",
+        "hindi_scaffold": "याद करें — नीले रंग को English में बोलिए।",
+        "expected_pattern": "blue",
+        "success_criteria": "pronunciation_accuracy >= 0.65 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L0-8-A2",
+        "type": "recall_drill",
+        "target_text": "Friday.",
+        "hindi_scaffold": "याद करें — शुक्रवार को English में बोलिए।",
+        "expected_pattern": "friday",
+        "success_criteria": "pronunciation_accuracy >= 0.65 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L0-8-A3",
+        "type": "listen_repeat",
+        "target_text": "Red apple.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Red apple.",
+        "expected_pattern": "red apple",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L0-8-A4",
+        "type": "listen_repeat",
+        "target_text": "My mother.",
+        "hindi_scaffold": "सुनिए और दोहराइए: My mother.",
+        "expected_pattern": "my mother",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["my"]
+      },
+      {
+        "id": "L0-8-A5",
+        "type": "translate_say",
+        "target_text": "Black bag.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: काला बैग — English में बोलिए।",
+        "expected_pattern": "black bag",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L0-8-A6",
+        "type": "translate_say",
+        "target_text": "Monday morning.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: सोमवार की सुबह — English में बोलिए।",
+        "expected_pattern": "monday morning",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["morning"]
+      },
+      {
+        "id": "L0-8-A7",
+        "type": "prompt_respond",
+        "target_text": "Water.",
+        "hindi_scaffold": "जवाब दीजिए — आप क्या पीना चाहते हैं? English में एक शब्द में बोलिए।",
+        "expected_pattern": "water",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      }
+    ]
+  }
+}

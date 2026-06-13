@@ -1,0 +1,112 @@
+{
+  "level": {
+    "id": "L1",
+    "name": "First Sentences",
+    "cefr": "A1",
+    "hindi_support": 0.5,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L1-8",
+    "level_id": "L1",
+    "title": "L1 Review — Simple Conversations",
+    "activities": [
+      {
+        "id": "L1-8-A1",
+        "type": "listen_repeat",
+        "target_text": "Hello! My name is Ravi. I am from Jaipur.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Hello! My name is Ravi. I am from Jaipur.",
+        "expected_pattern": "hello my name is ravi i am from jaipur",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["from"]
+      },
+      {
+        "id": "L1-8-A2",
+        "type": "listen_repeat",
+        "target_text": "I am a shopkeeper. I like my work.",
+        "hindi_scaffold": "सुनिए और दोहराइए: I am a shopkeeper. I like my work.",
+        "expected_pattern": "i am a shopkeeper i like my work",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["shopkeeper", "work"]
+      },
+      {
+        "id": "L1-8-A3",
+        "type": "translate_say",
+        "target_text": "Where are you from?",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: आप कहाँ से हैं?",
+        "expected_pattern": "where are you from",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-8-A4",
+        "type": "translate_say",
+        "target_text": "What do you do?",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: आप क्या काम करते हैं?",
+        "expected_pattern": "what do you do",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-8-A5",
+        "type": "prompt_respond",
+        "target_text": "I am from Lucknow. I am a teacher.",
+        "hindi_scaffold": "किसी नए व्यक्ति से मिलिए — अपना परिचय दीजिए: नाम, शहर, काम — English में।",
+        "expected_pattern": "i am",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-8-A6",
+        "type": "prompt_respond",
+        "target_text": "I have a small family. My mother is a teacher and my father is a farmer.",
+        "hindi_scaffold": "अपने परिवार के बारे में बताइए — English में दो sentences बोलिए।",
+        "expected_pattern": "my",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-8-A7",
+        "type": "prompt_respond",
+        "target_text": "I wake up at six, eat breakfast, and go to work by bus.",
+        "hindi_scaffold": "अपनी सुबह की दिनचर्या बताइए — English में तीन काम बोलिए।",
+        "expected_pattern": "i wake up",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-8-A8",
+        "type": "recall_drill",
+        "target_text": "How much is this?",
+        "hindi_scaffold": "याद करें — दाम पूछने के लिए English में क्या कहते हैं?",
+        "expected_pattern": "how much is this",
+        "success_criteria": "pronunciation_accuracy >= 0.65 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      }
+    ]
+  }
+}

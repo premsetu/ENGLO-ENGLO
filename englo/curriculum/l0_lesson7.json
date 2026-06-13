@@ -1,0 +1,88 @@
+{
+  "level": {
+    "id": "L0",
+    "name": "Bootstrap",
+    "cefr": "pre-A1",
+    "hindi_support": 0.8,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L0-7",
+    "level_id": "L0",
+    "title": "Days of the Week",
+    "activities": [
+      {
+        "id": "L0-7-A1",
+        "type": "listen_repeat",
+        "target_text": "Monday. Tuesday. Wednesday.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Monday. Tuesday. Wednesday.",
+        "expected_pattern": "monday tuesday wednesday",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["Monday", "Tuesday", "Wednesday"]
+      },
+      {
+        "id": "L0-7-A2",
+        "type": "listen_repeat",
+        "target_text": "Thursday. Friday.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Thursday. Friday.",
+        "expected_pattern": "thursday friday",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["Thursday", "Friday"]
+      },
+      {
+        "id": "L0-7-A3",
+        "type": "listen_repeat",
+        "target_text": "Saturday. Sunday.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Saturday. Sunday.",
+        "expected_pattern": "saturday sunday",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["Saturday", "Sunday"]
+      },
+      {
+        "id": "L0-7-A4",
+        "type": "translate_say",
+        "target_text": "Sunday.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: रविवार को English में क्या कहते हैं?",
+        "expected_pattern": "sunday",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L0-7-A5",
+        "type": "translate_say",
+        "target_text": "Friday.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: शुक्रवार को English में क्या कहते हैं?",
+        "expected_pattern": "friday",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L0-7-A6",
+        "type": "prompt_respond",
+        "target_text": "Tuesday.",
+        "hindi_scaffold": "जवाब दीजिए — सोमवार के बाद कौन सा दिन आता है? English में बोलिए।",
+        "expected_pattern": "tuesday",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      }
+    ]
+  }
+}

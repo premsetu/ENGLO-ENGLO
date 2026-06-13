@@ -1,0 +1,88 @@
+{
+  "level": {
+    "id": "L0",
+    "name": "Bootstrap",
+    "cefr": "pre-A1",
+    "hindi_support": 0.8,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L0-6",
+    "level_id": "L0",
+    "title": "Food and Drinks",
+    "activities": [
+      {
+        "id": "L0-6-A1",
+        "type": "listen_repeat",
+        "target_text": "Water. Tea. Milk.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Water. Tea. Milk.",
+        "expected_pattern": "water tea milk",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["water", "tea", "milk"]
+      },
+      {
+        "id": "L0-6-A2",
+        "type": "listen_repeat",
+        "target_text": "Rice. Bread. Egg.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Rice. Bread. Egg.",
+        "expected_pattern": "rice bread egg",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["rice", "bread", "egg"]
+      },
+      {
+        "id": "L0-6-A3",
+        "type": "listen_repeat",
+        "target_text": "Apple. Banana.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Apple. Banana.",
+        "expected_pattern": "apple banana",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["apple", "banana"]
+      },
+      {
+        "id": "L0-6-A4",
+        "type": "translate_say",
+        "target_text": "Rice.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: चावल को English में क्या कहते हैं?",
+        "expected_pattern": "rice",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L0-6-A5",
+        "type": "translate_say",
+        "target_text": "Milk.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: दूध को English में क्या कहते हैं?",
+        "expected_pattern": "milk",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L0-6-A6",
+        "type": "prompt_respond",
+        "target_text": "Water.",
+        "hindi_scaffold": "जवाब दीजिए — आप क्या पीना चाहते हैं? (पानी पीना है) — English में बोलिए।",
+        "expected_pattern": "water",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      }
+    ]
+  }
+}

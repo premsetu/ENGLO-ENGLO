@@ -1,0 +1,100 @@
+{
+  "level": {
+    "id": "L1",
+    "name": "First Sentences",
+    "cefr": "A1",
+    "hindi_support": 0.5,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L1-1",
+    "level_id": "L1",
+    "title": "I am / You are / He is",
+    "activities": [
+      {
+        "id": "L1-1-A1",
+        "type": "listen_repeat",
+        "target_text": "I am a student.",
+        "hindi_scaffold": "सुनिए और दोहराइए: I am a student.",
+        "expected_pattern": "i am a student",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["I", "am", "a", "student"]
+      },
+      {
+        "id": "L1-1-A2",
+        "type": "listen_repeat",
+        "target_text": "She is my sister. He is my brother.",
+        "hindi_scaffold": "सुनिए और दोहराइए: She is my sister. He is my brother.",
+        "expected_pattern": "she is my sister he is my brother",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["she", "he", "is"]
+      },
+      {
+        "id": "L1-1-A3",
+        "type": "listen_repeat",
+        "target_text": "We are friends. They are teachers.",
+        "hindi_scaffold": "सुनिए और दोहराइए: We are friends. They are teachers.",
+        "expected_pattern": "we are friends they are teachers",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["we", "are", "friends", "they", "teachers"]
+      },
+      {
+        "id": "L1-1-A4",
+        "type": "translate_say",
+        "target_text": "I am a doctor.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: मैं एक डॉक्टर हूँ।",
+        "expected_pattern": "i am a doctor",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["doctor"]
+      },
+      {
+        "id": "L1-1-A5",
+        "type": "translate_say",
+        "target_text": "She is a nurse.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: वह एक नर्स है।",
+        "expected_pattern": "she is a nurse",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["nurse"]
+      },
+      {
+        "id": "L1-1-A6",
+        "type": "prompt_respond",
+        "target_text": "I am a student.",
+        "hindi_scaffold": "जवाब दीजिए — आप कौन हैं? अपना परिचय English में दीजिए।",
+        "expected_pattern": "i am",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-1-A7",
+        "type": "prompt_respond",
+        "target_text": "She is my mother.",
+        "hindi_scaffold": "जवाब दीजिए — वह कौन हैं? (माँ हैं) — पूरी sentence में English में बोलिए।",
+        "expected_pattern": "she is my mother",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      }
+    ]
+  }
+}

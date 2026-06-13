@@ -1,0 +1,100 @@
+{
+  "level": {
+    "id": "L1",
+    "name": "First Sentences",
+    "cefr": "A1",
+    "hindi_support": 0.5,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L1-6",
+    "level_id": "L1",
+    "title": "Shopping — Prices and Quantities",
+    "activities": [
+      {
+        "id": "L1-6-A1",
+        "type": "listen_repeat",
+        "target_text": "How much is this?",
+        "hindi_scaffold": "सुनिए और दोहराइए: How much is this?",
+        "expected_pattern": "how much is this",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["how much"]
+      },
+      {
+        "id": "L1-6-A2",
+        "type": "listen_repeat",
+        "target_text": "It costs fifty rupees. That is too expensive.",
+        "hindi_scaffold": "सुनिए और दोहराइए: It costs fifty rupees. That is too expensive.",
+        "expected_pattern": "it costs fifty rupees that is too expensive",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["costs", "rupees", "expensive"]
+      },
+      {
+        "id": "L1-6-A3",
+        "type": "listen_repeat",
+        "target_text": "I want two kilos of rice. I will take it.",
+        "hindi_scaffold": "सुनिए और दोहराइए: I want two kilos of rice. I will take it.",
+        "expected_pattern": "i want two kilos of rice i will take it",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["want", "kilos", "will", "take"]
+      },
+      {
+        "id": "L1-6-A4",
+        "type": "translate_say",
+        "target_text": "How much does this shirt cost?",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: इस कमीज़ की कीमत कितनी है?",
+        "expected_pattern": "how much does this shirt cost",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["shirt"]
+      },
+      {
+        "id": "L1-6-A5",
+        "type": "translate_say",
+        "target_text": "Please give me one kilo of onions.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: कृपया एक किलो प्याज़ दीजिए।",
+        "expected_pattern": "please give me one kilo of onions",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-6-A6",
+        "type": "prompt_respond",
+        "target_text": "How much is this? It costs thirty rupees.",
+        "hindi_scaffold": "दुकानदार से दाम पूछिए — 'How much' से शुरू करके English में बोलिए।",
+        "expected_pattern": "how much",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-6-A7",
+        "type": "prompt_respond",
+        "target_text": "That is too expensive. Can I have it for forty rupees?",
+        "hindi_scaffold": "दुकानदार ने ज़्यादा दाम बताया — मोल-भाव करें — English में बोलिए।",
+        "expected_pattern": "too expensive",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["forty"]
+      }
+    ]
+  }
+}

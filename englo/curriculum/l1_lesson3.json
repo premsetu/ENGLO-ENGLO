@@ -1,0 +1,100 @@
+{
+  "level": {
+    "id": "L1",
+    "name": "First Sentences",
+    "cefr": "A1",
+    "hindi_support": 0.5,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L1-3",
+    "level_id": "L1",
+    "title": "Talking About Your Family",
+    "activities": [
+      {
+        "id": "L1-3-A1",
+        "type": "listen_repeat",
+        "target_text": "My mother is a teacher.",
+        "hindi_scaffold": "सुनिए और दोहराइए: My mother is a teacher.",
+        "expected_pattern": "my mother is a teacher",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["teacher"]
+      },
+      {
+        "id": "L1-3-A2",
+        "type": "listen_repeat",
+        "target_text": "I have one brother and two sisters.",
+        "hindi_scaffold": "सुनिए और दोहराइए: I have one brother and two sisters.",
+        "expected_pattern": "i have one brother and two sisters",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["have", "and"]
+      },
+      {
+        "id": "L1-3-A3",
+        "type": "listen_repeat",
+        "target_text": "My father works in Delhi.",
+        "hindi_scaffold": "सुनिए और दोहराइए: My father works in Delhi.",
+        "expected_pattern": "my father works in delhi",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["works", "in"]
+      },
+      {
+        "id": "L1-3-A4",
+        "type": "translate_say",
+        "target_text": "My brother is a farmer.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: मेरा भाई एक किसान है।",
+        "expected_pattern": "my brother is a farmer",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["farmer"]
+      },
+      {
+        "id": "L1-3-A5",
+        "type": "translate_say",
+        "target_text": "I have a small family.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: मेरा परिवार छोटा है।",
+        "expected_pattern": "i have a small family",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["small", "family"]
+      },
+      {
+        "id": "L1-3-A6",
+        "type": "prompt_respond",
+        "target_text": "My mother is a housewife.",
+        "hindi_scaffold": "जवाब दीजिए — आपकी माँ क्या करती हैं? English में पूरी sentence बोलिए।",
+        "expected_pattern": "my mother is",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["housewife"]
+      },
+      {
+        "id": "L1-3-A7",
+        "type": "prompt_respond",
+        "target_text": "I have two brothers.",
+        "hindi_scaffold": "जवाब दीजिए — आपके कितने भाई-बहन हैं? English में बोलिए।",
+        "expected_pattern": "i have",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      }
+    ]
+  }
+}

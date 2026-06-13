@@ -1,0 +1,100 @@
+{
+  "level": {
+    "id": "L1",
+    "name": "First Sentences",
+    "cefr": "A1",
+    "hindi_support": 0.5,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L1-5",
+    "level_id": "L1",
+    "title": "Where Is...? — Locations",
+    "activities": [
+      {
+        "id": "L1-5-A1",
+        "type": "listen_repeat",
+        "target_text": "Where is the school?",
+        "hindi_scaffold": "सुनिए और दोहराइए: Where is the school?",
+        "expected_pattern": "where is the school",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["where", "school"]
+      },
+      {
+        "id": "L1-5-A2",
+        "type": "listen_repeat",
+        "target_text": "It is near the market. The shop is on the left.",
+        "hindi_scaffold": "सुनिए और दोहराइए: It is near the market. The shop is on the left.",
+        "expected_pattern": "it is near the market the shop is on the left",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["near", "market", "shop", "left"]
+      },
+      {
+        "id": "L1-5-A3",
+        "type": "listen_repeat",
+        "target_text": "Go straight and turn right.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Go straight and turn right.",
+        "expected_pattern": "go straight and turn right",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["go", "straight", "turn", "right"]
+      },
+      {
+        "id": "L1-5-A4",
+        "type": "translate_say",
+        "target_text": "The hospital is next to the school.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: अस्पताल स्कूल के बगल में है।",
+        "expected_pattern": "the hospital is next to the school",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["hospital", "next to"]
+      },
+      {
+        "id": "L1-5-A5",
+        "type": "translate_say",
+        "target_text": "The station is opposite the park.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: स्टेशन पार्क के सामने है।",
+        "expected_pattern": "the station is opposite the park",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["station", "opposite", "park"]
+      },
+      {
+        "id": "L1-5-A6",
+        "type": "prompt_respond",
+        "target_text": "I live near the market.",
+        "hindi_scaffold": "जवाब दीजिए — आप कहाँ रहते हैं? 'I live' से शुरू करके English में बोलिए।",
+        "expected_pattern": "i live",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["live"]
+      },
+      {
+        "id": "L1-5-A7",
+        "type": "prompt_respond",
+        "target_text": "Go straight, then turn left.",
+        "hindi_scaffold": "जवाब दीजिए — रास्ता बताइए: सीधे जाकर बाईं तरफ मुड़ना है — English में बोलिए।",
+        "expected_pattern": "go straight turn left",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      }
+    ]
+  }
+}

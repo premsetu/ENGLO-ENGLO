@@ -1,0 +1,88 @@
+{
+  "level": {
+    "id": "L0",
+    "name": "Bootstrap",
+    "cefr": "pre-A1",
+    "hindi_support": 0.8,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L0-5",
+    "level_id": "L0",
+    "title": "Common Objects",
+    "activities": [
+      {
+        "id": "L0-5-A1",
+        "type": "listen_repeat",
+        "target_text": "Book. Pen.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Book. Pen.",
+        "expected_pattern": "book pen",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["book", "pen"]
+      },
+      {
+        "id": "L0-5-A2",
+        "type": "listen_repeat",
+        "target_text": "Chair. Table.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Chair. Table.",
+        "expected_pattern": "chair table",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["chair", "table"]
+      },
+      {
+        "id": "L0-5-A3",
+        "type": "listen_repeat",
+        "target_text": "Bag. Door. Window.",
+        "hindi_scaffold": "सुनिए और दोहराइए: Bag. Door. Window.",
+        "expected_pattern": "bag door window",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": ["bag", "door", "window"]
+      },
+      {
+        "id": "L0-5-A4",
+        "type": "translate_say",
+        "target_text": "Book.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: किताब को English में क्या कहते हैं?",
+        "expected_pattern": "book",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L0-5-A5",
+        "type": "translate_say",
+        "target_text": "Window.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: खिड़की को English में क्या कहते हैं?",
+        "expected_pattern": "window",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L0-5-A6",
+        "type": "prompt_respond",
+        "target_text": "Chair.",
+        "hindi_scaffold": "जवाब दीजिए — यह क्या है? (कुर्सी है) — English में बोलिए।",
+        "expected_pattern": "chair",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L0",
+        "hindi_support": 0.8,
+        "vocab_introduced": []
+      }
+    ]
+  }
+}

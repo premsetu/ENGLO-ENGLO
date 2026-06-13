@@ -1,0 +1,100 @@
+{
+  "level": {
+    "id": "L1",
+    "name": "First Sentences",
+    "cefr": "A1",
+    "hindi_support": 0.5,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L1-2",
+    "level_id": "L1",
+    "title": "Likes and Dislikes",
+    "activities": [
+      {
+        "id": "L1-2-A1",
+        "type": "listen_repeat",
+        "target_text": "I like tea.",
+        "hindi_scaffold": "सुनिए और दोहराइए: I like tea.",
+        "expected_pattern": "i like tea",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["like"]
+      },
+      {
+        "id": "L1-2-A2",
+        "type": "listen_repeat",
+        "target_text": "I don't like cold weather.",
+        "hindi_scaffold": "सुनिए और दोहराइए: I don't like cold weather.",
+        "expected_pattern": "i don't like cold weather",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["don't", "cold", "weather"]
+      },
+      {
+        "id": "L1-2-A3",
+        "type": "listen_repeat",
+        "target_text": "I love cricket. I hate spiders.",
+        "hindi_scaffold": "सुनिए और दोहराइए: I love cricket. I hate spiders.",
+        "expected_pattern": "i love cricket i hate spiders",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["love", "hate", "cricket", "spiders"]
+      },
+      {
+        "id": "L1-2-A4",
+        "type": "translate_say",
+        "target_text": "I like mango.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: मुझे आम पसंद है।",
+        "expected_pattern": "i like mango",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["mango"]
+      },
+      {
+        "id": "L1-2-A5",
+        "type": "translate_say",
+        "target_text": "I don't like rice.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: मुझे चावल पसंद नहीं है।",
+        "expected_pattern": "i don't like rice",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-2-A6",
+        "type": "prompt_respond",
+        "target_text": "I like cricket.",
+        "hindi_scaffold": "जवाब दीजिए — आपको क्या पसंद है? पूरी sentence में English में बोलिए।",
+        "expected_pattern": "i like",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-2-A7",
+        "type": "prompt_respond",
+        "target_text": "I don't like onions.",
+        "hindi_scaffold": "जवाब दीजिए — आपको क्या पसंद नहीं है? 'I don't like' से शुरू करें।",
+        "expected_pattern": "i don't like",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["onions"]
+      }
+    ]
+  }
+}

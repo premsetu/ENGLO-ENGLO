@@ -1,0 +1,100 @@
+{
+  "level": {
+    "id": "L1",
+    "name": "First Sentences",
+    "cefr": "A1",
+    "hindi_support": 0.5,
+    "accent_setting": "slow_clear"
+  },
+  "lesson": {
+    "id": "L1-4",
+    "level_id": "L1",
+    "title": "Can I Have...? — Requests",
+    "activities": [
+      {
+        "id": "L1-4-A1",
+        "type": "listen_repeat",
+        "target_text": "Can I have some water, please?",
+        "hindi_scaffold": "सुनिए और दोहराइए: Can I have some water, please?",
+        "expected_pattern": "can i have some water please",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["can", "some", "please"]
+      },
+      {
+        "id": "L1-4-A2",
+        "type": "listen_repeat",
+        "target_text": "Can you help me, please?",
+        "hindi_scaffold": "सुनिए और दोहराइए: Can you help me, please?",
+        "expected_pattern": "can you help me please",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["help", "me"]
+      },
+      {
+        "id": "L1-4-A3",
+        "type": "listen_repeat",
+        "target_text": "May I sit here?",
+        "hindi_scaffold": "सुनिए और दोहराइए: May I sit here?",
+        "expected_pattern": "may i sit here",
+        "success_criteria": "pronunciation_accuracy >= 0.7 and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["may", "sit", "here"]
+      },
+      {
+        "id": "L1-4-A4",
+        "type": "translate_say",
+        "target_text": "Please give me the book.",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: कृपया मुझे किताब दीजिए।",
+        "expected_pattern": "please give me the book",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": ["give", "the"]
+      },
+      {
+        "id": "L1-4-A5",
+        "type": "translate_say",
+        "target_text": "Can I have a pen, please?",
+        "hindi_scaffold": "अंग्रेज़ी में बोलिए: क्या मुझे एक पेन मिल सकता है?",
+        "expected_pattern": "can i have a pen please",
+        "success_criteria": "correct_vocabulary and pronunciation_accuracy >= 0.65",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-4-A6",
+        "type": "prompt_respond",
+        "target_text": "Can I have some tea, please?",
+        "hindi_scaffold": "दुकानदार से चाय माँगिए — English में礼modio से बोलिए।",
+        "expected_pattern": "can i have",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      },
+      {
+        "id": "L1-4-A7",
+        "type": "prompt_respond",
+        "target_text": "Can you help me, please?",
+        "hindi_scaffold": "किसी से मदद माँगिए — 'Can you' से शुरू करके English में बोलिए।",
+        "expected_pattern": "can you",
+        "success_criteria": "correct_meaning and utterance_complete",
+        "accent_setting": "slow_clear",
+        "simplicity_level": "L1",
+        "hindi_support": 0.5,
+        "vocab_introduced": []
+      }
+    ]
+  }
+}
