@@ -8,5 +8,10 @@ python-dotenv>=1.0.0
 numpy>=1.24.0
 rich>=13.0.0
 
+# API server (Phase 7)
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.9
+
 # Optional — install to use Azure Pronunciation Assessment instead of local scorer
 # azure-cognitiveservices-speech>=1.38.0
