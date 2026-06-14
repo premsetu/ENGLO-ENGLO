@@ -7,8 +7,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#1a1a2e"
+      "backgroundColor": "#0d0d1f"
     },
     "ios": {
       "supportsTablet": false,
@@ -19,7 +20,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#1a1a2e"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0d0d1f"
       },
       "package": "com.englo.tutor",
       "permissions": ["RECORD_AUDIO"]
