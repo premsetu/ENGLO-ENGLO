@@ -2,14 +2,20 @@ from __future__ import annotations
 
 import json
 import os
+import re
+from difflib import SequenceMatcher
 
 import anthropic
 
+from . import mastery
 from .bilingual import hindi_support_directive
-from .models import Activity, LLMResponse, PronunciationScore, Verdict
+from .models import Activity, ActivityType, LLMResponse, PronunciationScore, Verdict
 
 _client: anthropic.Anthropic | None = None
 _MODEL = os.getenv("TUTOR_LLM_MODEL", "claude-haiku-4-5-20251001")
+
+# Force the offline heuristic grader regardless of key (handy for tests/demos)
+_FORCE_LOCAL = os.getenv("TUTOR_LLM_LOCAL", "").lower() in {"1", "true", "yes"}
 
 _SYSTEM_PROMPT_BASE = """\
 You are an expert English tutor for Hindi-speaking absolute beginners.
@@ -42,6 +48,106 @@ def _get_client() -> anthropic.Anthropic:
 
 
 def evaluate(
+    activity: Activity,
+    transcript: str,
+    pronunciation: PronunciationScore,
+) -> LLMResponse:
+    """Grade a turn.
+
+    Uses Claude when ANTHROPIC_API_KEY is set; otherwise falls back to a local
+    heuristic grader so the loop runs fully offline (no key, no network).
+    """
+    if _FORCE_LOCAL or not os.getenv("ANTHROPIC_API_KEY"):
+        return _local_evaluate(activity, transcript, pronunciation)
+    try:
+        return _claude_evaluate(activity, transcript, pronunciation)
+    except (anthropic.APIError, anthropic.APIConnectionError):
+        # Network/auth hiccup — degrade gracefully rather than break the turn.
+        return _local_evaluate(activity, transcript, pronunciation)
+
+
+# ── Offline heuristic grader ───────────────────────────────────────────────────
+
+def _normalize(text: str) -> str:
+    return re.sub(r"[^\w\s]", "", text.lower()).strip()
+
+
+def _local_evaluate(
+    activity: Activity,
+    transcript: str,
+    pronunciation: PronunciationScore,
+) -> LLMResponse:
+    """Key-free grader: blend lexical match with the pronunciation score.
+
+    Verdict logic:
+      - pass    : words match the target AND pron clears the success threshold
+      - partial : words mostly match but pron is weak (or vice-versa)
+      - fail    : little lexical overlap
+    Feedback (correction + next line) is scaffolded by hindi_support.
+    """
+    target = _normalize(activity.target_text)
+    said = _normalize(transcript)
+    lexical = SequenceMatcher(None, target, said).ratio() if target else 1.0
+
+    # Non-scored types (roleplay / conversation) are judged on lexical overlap only.
+    pron_ok = True
+    threshold = mastery.parse_pron_threshold(activity.success_criteria)
+    if activity.type in {ActivityType.LISTEN_REPEAT, ActivityType.RECALL_DRILL}:
+        pron_ok = pronunciation.overall >= threshold
+
+    if lexical >= 0.80 and pron_ok:
+        verdict = Verdict.PASS
+    elif lexical >= 0.55:
+        verdict = Verdict.PARTIAL
+    else:
+        verdict = Verdict.FAIL
+
+    correction, next_line, mix = _local_feedback(
+        verdict, activity, pronunciation, said
+    )
+    return LLMResponse(
+        verdict=verdict,
+        correction=correction,
+        next_spoken_line=next_line,
+        language_mix=mix,
+        notes_for_tracker={"grader": "local", "lexical": round(lexical, 2)},
+    )
+
+
+def _local_feedback(verdict, activity, pron, said):
+    """Build a short spoken line + correction, scaffolded by hindi_support."""
+    hs = activity.hindi_support
+    target = activity.target_text
+
+    if verdict is Verdict.PASS:
+        if hs >= 0.7:
+            return "", f"बहुत बढ़िया! Say it once more: {target}", "hi+en"
+        if hs >= 0.4:
+            return "", f"Very good! Next one.", "en"
+        return "", "Perfect. Let's continue.", "en"
+
+    if verdict is Verdict.PARTIAL:
+        phon = pron.weak_phonemes[0] if pron.weak_phonemes else None
+        tip = f" Focus on the {phon} sound." if phon else ""
+        if hs >= 0.7:
+            return (f"थोड़ा सा aur clear bolना hai.{tip}",
+                    f"Almost! फिर से कहिए: {target}", "hi+en")
+        if hs >= 0.4:
+            return (f"Close!{tip}", f"Try again: {target}", "en")
+        return (f"Almost there.{tip}", f"Once more: {target}", "en")
+
+    # FAIL
+    if hs >= 0.7:
+        return ("कोई बात नहीं, फिर से सुनिए।",
+                f"सुनिए और दोहराइए: {target}", "hi+en")
+    if hs >= 0.4:
+        return ("No problem, listen again.", f"Repeat after me: {target}", "en")
+    return ("Let's try again.", f"Listen and repeat: {target}", "en")
+
+
+# ── Claude grader ───────────────────────────────────────────────────────────────
+
+def _claude_evaluate(
     activity: Activity,
     transcript: str,
     pronunciation: PronunciationScore,

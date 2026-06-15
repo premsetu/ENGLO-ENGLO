@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import base64
 import uuid
 from pathlib import Path
@@ -130,10 +131,18 @@ def get_activity(session_id: str):
 async def submit_turn(session_id: str, audio: UploadFile = File(...)):
     """Accept a learner's audio recording and return the evaluation + tutor response."""
     session = _get_or_404(session_id)
-    engine = session.engine
 
-    if engine.is_complete:
+    if session.engine.is_complete:
         raise HTTPException(status_code=410, detail="Course complete")
+
+    audio_bytes = await audio.read()
+    # STT, scoring, grading and TTS are all blocking (and TTS spins its own event
+    # loop), so run the whole pipeline in a worker thread — never on the loop.
+    return await asyncio.to_thread(_process_turn, session, session_id, audio_bytes)
+
+
+def _process_turn(session, session_id: str, audio_bytes: bytes) -> TurnOut:
+    engine = session.engine
 
     # Determine which activity we're evaluating
     drill = engine.pop_pending_drill(session.tracker)
@@ -142,7 +151,7 @@ async def submit_turn(session_id: str, audio: UploadFile = File(...)):
 
     # Save uploaded audio to session temp dir
     audio_path = session.audio_path(f"{uuid.uuid4()}.wav")
-    audio_path.write_bytes(await audio.read())
+    audio_path.write_bytes(audio_bytes)
 
     # STT
     stt_result = stt.transcribe_full(str(audio_path))
