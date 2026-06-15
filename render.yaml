@@ -1,0 +1,27 @@
+# Render Blueprint — deploys the ENGLO API as a public web service.
+#
+# How to go live (≈2 min, needs YOUR Render account):
+#   1. Push this branch to GitHub.
+#   2. Render dashboard → New → Blueprint → pick this repo/branch.
+#   3. When prompted, paste your ANTHROPIC_API_KEY (marked secret below).
+#   4. Click Apply. Render builds the Dockerfile and gives you a public URL:
+#        https://englo-api.onrender.com/docs
+#
+# The free plan sleeps after inactivity; first request after sleep is slow
+# (Whisper model also downloads on first boot). Upgrade the plan to keep it warm.
+services:
+  - type: web
+    name: englo-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false            # paste your key in the dashboard; never committed
+      - key: TUTOR_LLM_MODEL
+        value: claude-haiku-4-5-20251001
+      - key: WHISPER_MODEL
+        value: base
+      - key: API_RELOAD
+        value: "false"

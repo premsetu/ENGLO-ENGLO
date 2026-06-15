@@ -1,0 +1,10 @@
+mobile/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+.git/
+.venv/
+.env
+.cache/
+*.md
